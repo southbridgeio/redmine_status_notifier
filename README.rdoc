@@ -1,0 +1,20 @@
+= Redmine Notifications about emergency
+
+Server script is called if state of issue was changed to one of emergency states or if	issue with emergency state was closed
+
+= Install
+
+= Configuration
+
+plugins/status_notifier/init.rb contains settings for plugin:
+  1) 'done_status_name' specifies name of status which is considered as done state for issue
+  2) 'critical_priority' contains list of priorities which mean critical priority for issue
+  3) 'script' defines path for script to call
+
+= Usage
+  
+It is necessary to turn on status notifier module in projects settings.
+Plugin executes script with following parameters:
+  'script' <active | done> <issue id> <subject in double quotes>
+
+= Sponsored by centos-admin.ru
