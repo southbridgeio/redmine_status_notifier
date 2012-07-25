@@ -10,10 +10,6 @@ SETTINGS =
 'critical_priority' => %w(Авария! Ахтунг!), 
 'script' => '/opt/redmine/se.sh'
 }
-# live script
-# /srv/southbridge/scripts/factory-notify.sh
-# test script
-# /opt/redmine/se.sh
 
 Redmine::Plugin.register :redmine_status_notifier do
   name 'Redmine Notifier plugin'
