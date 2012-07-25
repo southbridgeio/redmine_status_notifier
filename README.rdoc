@@ -4,6 +4,12 @@ Server script is called if state of issue was changed to one of emergency states
 
 = Install
 
+0. Follow the Redmine plugin installation steps at: [http://www.redmine.org/wiki/redmine/Plugins](http://www.redmine.org/wiki/redmine/Plugins)
+1. Cd to your redmine `plugins/` dir
+2. Git-clone the plugin from this repo into a folder in there: `git clone git://github.com/olemskoi/redmine_status_notifier.git redmine_status_notifier` (*You must name your directory with underscores as shown here, or the plugin will throw a fatal error*)
+3. Configure gem settings as shown in Configuration section below
+4. Restart your Redmine web servers (e.g. mongrel, thin, mod_rails)
+
 = Configuration
 
 plugins/status_notifier/init.rb contains settings for plugin:
