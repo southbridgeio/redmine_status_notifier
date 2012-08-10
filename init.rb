@@ -6,7 +6,6 @@ require_dependency 'redmine_status_notifier/hooks'
 # 'script' defines path for script to call
 SETTINGS = 
 {
-'done_status_name' => 'Выполнена', 
 'critical_priority' => %w(Авария! Ахтунг!), 
 'script' => '/opt/redmine/se.sh'
 }
