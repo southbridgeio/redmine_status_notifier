@@ -46,7 +46,7 @@ module RedmineStatusNotifier
     end
 
     def shell_call
-      system("#{Setting["plugin_redmine_status_notifier"]["script"]} #{done? ? "done" : "active"} #{@issue.id} \"#{@issue.subject}\"")
+      system("#{Setting["plugin_redmine_status_notifier"]["script"]} #{done? ? "done" : "active"} #{@issue.id} #{@issue.project.identifier} \"#{@issue.subject}\"")
     end
   end
 end
