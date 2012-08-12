@@ -51,7 +51,7 @@ module RedmineStatusNotifier
     end
     
     def opened?
-      !@issue.priority.is_closed
+      !@issue.status.is_closed
     end
 
     def sending_on?(context = {})
