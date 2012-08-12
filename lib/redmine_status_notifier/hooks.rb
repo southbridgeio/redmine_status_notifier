@@ -4,7 +4,7 @@ module RedmineStatusNotifier
     def controller_issues_edit_before_save(context={ })
       return '' unless sending_on?(context)
       @issue = context[:issue]
-      if @issue and (urgent_assigned? or urgent_finished? or reopened?)
+      if @issue and (urgent_assigned? or urgent_finished? or urgent_reopened?)
        	shell_call
       end
     end
@@ -30,24 +30,29 @@ module RedmineStatusNotifier
     end
 
     def urgent_finished?
-      urgent_priority? and status_changed? and closed?
-    end
-
-    def status_changed?
-      @issue.status_id_changed?
+      urgent_priority? and was_opened? and closed?
     end
 
     def closed?
       @issue.status.is_closed
     end
 
-    def reopened?
-      status_changed? and was_closed? and opened?
+    def urgent_reopened?
+      urgent_priority? and was_closed? and opened?
     end
     
     def was_closed?
-      previous_status = IssueStatus.find @issue.status_id_was
-      previous_status.is_closed
+      status = previous_status
+      status.is_closed
+    end
+
+    def was_opened?
+      status = previous_status
+      !status.is_closed
+    end
+
+    def previous_status
+      IssueStatus.find @issue.status_id_was
     end
     
     def opened?
