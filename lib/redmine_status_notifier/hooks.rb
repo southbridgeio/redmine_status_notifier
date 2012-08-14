@@ -4,7 +4,7 @@ module RedmineStatusNotifier
     def controller_issues_edit_before_save(context={ })
       return '' unless sending_on?(context)
       @issue = context[:issue]
-      if @issue and (urgent_assigned? or urgent_finished? or urgent_reopened?)
+      if @issue and @issue.valid? and (urgent_assigned? or urgent_finished? or urgent_reopened?)
        	shell_call
       end
     end
