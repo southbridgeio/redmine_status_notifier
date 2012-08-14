@@ -4,6 +4,7 @@ module RedmineStatusNotifier
     def controller_issues_edit_after_save(context={ })
       return '' unless sending_on?(context)
       @issue = context[:issue]
+      @journal = context[:journal]
       if @issue and (urgent_assigned? or urgent_finished? or urgent_reopened?)
        	shell_call
       end
@@ -18,7 +19,8 @@ module RedmineStatusNotifier
     end
 
     def previous_value_for(prop)
-      @issue.journals.slice(-2).new_value_for(prop)
+      c = @journal.details.detect {|detail| detail.prop_key == prop}
+      c ? c.old_value : nil
     end
 
     def urgent_priority?
