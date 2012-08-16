@@ -32,7 +32,9 @@ module RedmineStatusNotifier
     end
 
     def priority_changed?
-      @issue.priority_id != previous_value_for(:priority_id)
+      if (previous_priority_id = previous_value_for("priority_id"))
+        @issue.priority_id != previous_priority_id
+      end
     end
 
     def urgent_finished?
@@ -46,21 +48,25 @@ module RedmineStatusNotifier
     def urgent_reopened?
       urgent_priority? and was_closed? and opened?
     end
-    
+
     def was_closed?
-      status = previous_status
-      status.is_closed
+      if (status = previous_status)
+        status.is_closed
+      end
     end
 
     def was_opened?
-      status = previous_status
-      !status.is_closed
+      if (status = previous_status)
+        !status.is_closed
+      end
     end
 
     def previous_status
-      IssueStatus.find(previous_value_for(:status_id))
+      if (status_id = previous_value_for("status_id"))
+        IssueStatus.find(status_id)
+      end
     end
-    
+
     def opened?
       !@issue.status.is_closed
     end
