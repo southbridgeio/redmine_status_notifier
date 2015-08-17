@@ -13,10 +13,10 @@ SETTINGS =
 
 Redmine::Plugin.register :redmine_status_notifier do
   name 'Redmine Notifier plugin'
-  author 'Southbridge'
+  author 'Centos-admin.ru'
   description 'Отправка уведомлений об авариях'
   version '0.0.2'
-  author_url 'http://southbridge.ru'
+  author_url 'http://centos-admin.ru'
   project_module "Отправка уведомлений об авариях" do
     permission(:send_on_urgent, {})
   end
