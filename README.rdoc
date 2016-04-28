@@ -1,5 +1,7 @@
 = Redmine Notifications about emergency
 
+Please help us make this plugin better telling us of any [issues](https://github.com/centosadmin/redmine_status_notifier/issues) you'll face using it. We are ready to answer all your questions regarding this plugin.
+
 Server script is called if:
 * state of issue was changed to one of emergency states
 * issue with emergency state was closed
