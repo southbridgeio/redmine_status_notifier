@@ -27,4 +27,4 @@ It is necessary to turn on status notifier module in projects settings.
 Plugin executes script with following parameters:
   'script' <active | done> <issue id> <project identifier> <subject in double quotes>
 
-= Sponsored by centos-admin.ru
+= Sponsored by https://southbridge.io
